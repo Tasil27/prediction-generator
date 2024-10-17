@@ -8,15 +8,6 @@ variable "lambda_role_arn" {
     type = string
 }
 
-variable "function_name" {
-    description = "The name of the Lambda function."
-    type = string
-}
-
-variable "lambda_role_arn" {
-    description = "The ARN of the Lambda execution role"
-    type = string
-}
 
 variable "handler" {
     description = "The function handler in the code"
