@@ -23,14 +23,13 @@ resource "aws_iam_role" "lambda_execution_role" {
 resource "aws_iam_role_policy_attachment" "lambda_execution_role_policy_attachment" {
     role = aws_iam_role.lambda_execution_role.name
     policy_arn = "arn:aws:iam::aws:policy/service-role/${var.policy_name}"
-  
 }
 
 resource "aws_iam_policy" "lambda_dynamodb_policy" {
-    name = "LambdaDynamoDBAccessPolicy"
-    description = "Policy for Lambda to access DynamoDB."
+  name        = "LambdaDynamoDBAccessPolicy"
+  description = "Policy for Lambda to access DynamoDB"
 
-    policy = jsonencode({
+  policy = jsonencode({
 	"Version": "2012-10-17",
 	"Statement": [
 		{
@@ -46,13 +45,13 @@ resource "aws_iam_policy" "lambda_dynamodb_policy" {
 				"dynamodb:Query",
 				"dynamodb:UpdateItem"
 			],
-			"Resource": "arn:aws:dynamodb:eu-central-1:3907-0733-4319:table/predictions"
+			"Resource": "arn:aws:dynamodb:eu-central-1:390707334319:table/predictions"
 		}
 	]
 })
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_dynamodb_policy_attachment" {
-    role = aws_iam_role.lambda_execution_role.name
-    policy_arn = aws_iam_policy.lambda_dynamodb_policy.arn
+  role       = aws_iam_role.lambda_execution_role.name
+  policy_arn = aws_iam_policy.lambda_dynamodb_policy.arn
 }

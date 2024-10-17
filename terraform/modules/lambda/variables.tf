@@ -8,6 +8,16 @@ variable "lambda_role_arn" {
     type = string
 }
 
+variable "function_name" {
+    description = "The name of the Lambda function."
+    type = string
+}
+
+variable "lambda_role_arn" {
+    description = "The ARN of the Lambda execution role"
+    type = string
+}
+
 variable "handler" {
     description = "The function handler in the code"
     type = string
@@ -26,4 +36,9 @@ variable "lambda_zip_path" {
 variable "lambda_environment_vars" {
     description = "Environment variables for the Lambda function"
     type = map(string)
+}
+
+variable "dynamodb_table_name" {
+  description = "The name of the DynamoDB table"
+  type        = string
 }
